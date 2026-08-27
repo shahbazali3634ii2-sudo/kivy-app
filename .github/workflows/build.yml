@@ -20,10 +20,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential ccache git libffi-dev libssl-dev python3-dev zip unzip openjdk-17-jdk
-        pip install --upgrade pip setuptools buildozer cython==0.29.33
+        sudo apt-get install -y build-essential ccache git libffi-dev libssl-dev python3-dev zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi7
+        pip install --upgrade pip setuptools
+        pip install "cython<3.0.0" buildozer
 
-    - name: Build with Buildozer
+    - name: Accept Android Licenses & Build
       run: |
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
